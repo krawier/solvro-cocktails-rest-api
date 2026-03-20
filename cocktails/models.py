@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -16,6 +17,9 @@ class Cocktail(models.Model):
 
     #manytomany through table 
     ingredients = models.ManyToManyField(Ingredient, through='CocktailIngredient')
+    
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+
     def __str__(self):
         return self.name
 

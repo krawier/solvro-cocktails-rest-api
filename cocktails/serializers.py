@@ -18,6 +18,8 @@ class CocktailSerializer(serializers.ModelSerializer):
     # we want to see the details
     ingredients_detail = CocktailIngredientSerializer(source='cocktailingredient_set',many=True,read_only=True)
 
+    author_name = serializers.ReadOnlyField(source='author.username')
+
     class Meta:
         model = Cocktail
-        fields = ['id', 'name', 'category', 'instructions', 'ingredients_detail']
+        fields = ['id', 'name', 'category', 'instructions', 'author_name' ,'ingredients_detail']
