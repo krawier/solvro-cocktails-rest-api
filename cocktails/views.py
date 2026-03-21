@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, filters, permissions, status
 from .models import Cocktail, Ingredient
-from.serializers import CocktailSerializer, IngredientSerializer
+from.serializers import CocktailSerializer, IngredientSerializer, RegisterSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from .permissions import IsAuthorAdminOrReadOnly
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from django.contrib.auth.models import User
 
 # cocktail views
 
@@ -74,3 +76,9 @@ class FavoriteCocktailListView(generics.ListAPIView):
 
     def get_queryset(self):
         return Cocktail.objects.filter(favorited_by=self.request.user)
+    
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSerializer    
