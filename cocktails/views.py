@@ -67,7 +67,7 @@ class CocktailFavoriteToggleView(APIView):
             return Response({"detail":"Added to favourties"}, status=status.HTTP_200_OK)
 
 
-class FavouriteCocktailListView(generics.ListAPIView):
+class FavoriteCocktailListView(generics.ListAPIView):
 
     serializer_class = CocktailSerializer
     permission_classes = [permissions.IsAuthenticated]
