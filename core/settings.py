@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'solvro_cocktails',
         'USER': 'solvro_admin',
-        'PASSWORD': 'supertajnehaslo123',
+        'PASSWORD': 'P@ssw0rd',
         'HOST': '127.0.0.1', 
         'PORT': '5432',
     }
