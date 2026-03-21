@@ -20,6 +20,7 @@ class Cocktail(models.Model):
     
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
+    favorited_by = models.ManyToManyField(User, related_name='favorite_cocktails', blank=True)
     def __str__(self):
         return self.name
 
