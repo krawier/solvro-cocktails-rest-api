@@ -18,13 +18,25 @@ class CocktailIngredientSerializer(serializers.ModelSerializer):
 
 class CocktailSerializer(serializers.ModelSerializer):
     # we want to see the details
-    ingredients_detail = CocktailIngredientSerializer(source='cocktailingredient_set',many=True,read_only=True)
+    ingredients_detail = CocktailIngredientSerializer(source='cocktailingredient_set',many=True)
 
     author_name = serializers.ReadOnlyField(source='author.username')
 
     class Meta:
         model = Cocktail
         fields = ['id', 'name', 'category', 'instructions', 'author_name' ,'ingredients_detail']
+
+    def create(self,validated_data):
+            ingredients_data = validated_data.pop('cocktailingredient_set')
+            cocktail = Cocktail.objects.create(**validated_data)
+            for item in ingredients_data:
+                CocktailIngredient.objects.create(
+                    cocktail=cocktail,
+                    ingredient=item['ingredient'],
+                    amount=item['amount']
+                )
+            
+            return cocktail
 
 
 class RegisterSerializer(serializers.ModelSerializer):
