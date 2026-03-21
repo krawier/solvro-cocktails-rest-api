@@ -16,7 +16,7 @@ class CocktailListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['category', 'ingredients']
+    filterset_fields = ['category', 'ingredients', 'author']
     search_fields = ['name','instructions','ingredients__name']
     ordering_fields = ['name']
 
