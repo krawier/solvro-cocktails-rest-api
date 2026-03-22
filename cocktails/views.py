@@ -41,7 +41,7 @@ class IngredientListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_field = ['is_alcoholic', 'cocktail']
+    filterset_fields = ['is_alcoholic', 'cocktail']
     search_fields = ['name','description', 'cocktail__name']
     ordering_fields = ['name']
 
