@@ -9,8 +9,8 @@ Udało mi się zaimplementować wszystkie podstawowe wymagania tj.:
  - za pomocą dockera stworzyłem bazę danych 
  - paginacja jest i działa 
  - walidacja też jest
-  Z nice to have zaimplementowałem: 
-  - rejestrację użytkowników za pomocą zimportowanego User, przeglądać może każdy, ale tylko zalogowany użytkownik może dodawać itemy; Zalogowany użytkownik może także zaznaczać cocktaile jako ulubione, zamiast recenzji to dodałem. Edycja i usuwanie jest dostępne tylko dla admina. Użytkownicy są powiażani z cocktailami, które utworzyli.
+ Z nice to have zaimplementowałem: 
+  - rejestrację użytkowników za pomocą zimportowanego User, przeglądać może każdy, ale tylko zalogowany użytkownik może dodawać itemy; Zalogowany użytkownik może także zaznaczać cocktaile jako ulubione, zamiast recenzji to dodałem. Edycja i usuwanie jest dostępne. Użytkownicy są powiażani z cocktailami, które utworzyli.
   -  są dwa testy integracyjne
   - Swagger jest -> /docs/
   - można filtrować koktiale po autorach, składnikach, kategorii, a składniki po koktailach i czy są alkoholowe
