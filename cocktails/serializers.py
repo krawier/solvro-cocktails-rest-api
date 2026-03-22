@@ -37,6 +37,25 @@ class CocktailSerializer(serializers.ModelSerializer):
                 )
             
             return cocktail
+    def update(self, instance, validated_data):
+        ingredients_data = validated_data.pop('cocktailingredient_set', None)
+
+        instance.name = validated_data.get('name', instance.name)
+        instance.category = validated_data.get('category', instance.category)
+        instance.instructions = validated_data.get('instructions', instance.instructions)
+        instance.save()
+
+        if ingredients_data is not None:
+            instance.cocktailingredient_set.all().delete()
+            
+            for item in ingredients_data:
+                CocktailIngredient.objects.create(
+                    cocktail=instance,
+                    ingredient=item['ingredient'],
+                    amount=item['amount']
+                )
+        
+        return instance
 
 
 class RegisterSerializer(serializers.ModelSerializer):
